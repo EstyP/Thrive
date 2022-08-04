@@ -1,0 +1,49 @@
+<!--profile page-->
+<html lang="en">
+    <head>
+        <title>display</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body bgcolor="#e6ffee">
+        <div class="one">
+            <div class="two">
+                <h1>Navigation</h1>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li class="active"><a href="{{url_for('display')}}">Profile</a></li>
+                    <li><a href="{{url_for('insert')}}">Add Plants</a></li>
+                    <li><a href="{{url_for('update')}}">Update Details</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('logout')}}">Log out</a></li>
+                </ul>
+            </div>
+            <div class="content" align="center">
+                <div class="topbar">
+                    <h2>Welcome!! You are in Profile Page!! </h2>
+                </div>  </br>
+                <div class="contentbar">
+                    <h1>Your Details</h1>    </br>
+                     {% block content %}
+                        <div class="border">
+                            <table class="worddark"></br></br></br></br>
+                                <tr>
+                                    <td>Username:</td>
+                                    <td>{{ account['username'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Password:</td>
+                                    <td>{{ account['user_password'] }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email ID:</td>
+                                    <td>{{ account['email'] }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    {% endblock %}
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>

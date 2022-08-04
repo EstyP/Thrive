@@ -1,0 +1,44 @@
+<!--search page for the whole database-->
+<html>
+    <head>
+        <title>search</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+
+    <body bgcolor="#e6ffee">
+    <div class="one">
+            <div class="two">
+                <h1>Navigation</h1>
+                <ul>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('display')}}">Profile</a></li>
+                    <li><a href="{{url_for('insert')}}">Add Plants</a></li>
+                    <li><a href="{{url_for('update')}}">Update Details</a></li>
+                    <li class="active"><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('logout')}}">Log out</a></li>
+                </ul>
+            </div>
+        <div class="content" align="center">
+                <div class="topbar">
+                    <h2>Welcome!! You are in search Page!! </h2>
+                </div>  </br>
+                <div class="contentbar">
+                    <h1>Search Plants</h1>    </br>
+        <form class="example" method="post" action=""
+         style="margin:auto;max-width:600px">
+            <input type="text" name="plant" placeholder="Search by name or all" class="textbox" id="plant" required>
+            <input type="submit" class="btn" value="Submit">
+            </button>
+        </form>
+        <p></p>
+        <center>
+        {% for item in data %}
+            <tr>
+                <td> {{item[0]}}, {{item[1]}} </td>
+                </br>
+            </tr>
+        {% endfor %}
+        </div>
+        </div>
+    </body>
+</html>

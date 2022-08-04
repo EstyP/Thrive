@@ -1,0 +1,32 @@
+<!--homepage-->
+<html lang="en">
+    <head>
+        <title>index</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+
+    <body bgcolor="#e6ffee">
+        <div class="one">
+            <div class="two">
+                <h1>Navigation</h1>
+                <ul>
+                    <li class="active"><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('display')}}">Profile</a></li>
+                    <li><a href="{{url_for('insert')}}">Add Plants</a></li>
+                    <li><a href="{{url_for('update')}}">Update Details</a></li>
+                    <li><a href="{{url_for('search')}}">Search</a></li>
+                    <li><a href="{{url_for('logout')}}">Log out</a></li>
+                </ul>
+            </div>
+            <div class="content" align="center">
+                <div class="topbar">
+                    <h2>Welcome!! You are in Home Page!! </h2>
+                </div></br></br>
+                <div class="contentbar">
+                     <div class="msg">{{ msg }}</div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
