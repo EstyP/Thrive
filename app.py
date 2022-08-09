@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
+from datetime import date, datetime
 
 app = Flask(__name__)
 
@@ -169,6 +170,31 @@ def insert():
             msg = 'Please fill out the form !'
         return render_template('insert.html', msg=msg)
     return redirect(url_for('login'))
+
+#page to add new plants to the database
+@app.route('/user_plants', methods=['GET', 'POST'])
+def user_plants():
+    msg = ''
+    if 'loggedin' in session:
+        if request.method == 'POST' and 'plant_name' in request.form:
+            plant_name = request.form['plant_name']
+            cursor = mysql.connection.cursor()
+            cursor.execute('select id from user where id = % s', (session['id'],))
+            id = cursor.fetchall()
+            id = [i[0] for i in id]  # [(id,)] -> [id]
+            query = 'insert into user_plants (id, plant_name) values(%s, %s)'
+            values = (id[0], plant_name)
+            cursor.execute(query, values)
+            mysql.connection.commit()
+            msg = 'Plant successfully added !'
+        elif request.method == 'POST':
+            msg = 'Please fill out the form !'
+        return render_template('user_plants.html', msg=msg)
+    return redirect(url_for('login'))
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host="localhost", port=int("5000"))
