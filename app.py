@@ -192,6 +192,16 @@ def user_plants():
         return render_template('user_plants.html', msg=msg)
     return redirect(url_for('login'))
 
+#users profile page
+@app.route("/view_plants")
+def view_plants():
+    if 'loggedin' in session:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT plant_name FROM user_plants WHERE id = % s', (session['id'],))
+        account = cursor.fetchall()
+        return render_template("view_plants.html", account=account)
+    return redirect(url_for('login'))
+
 
 
 

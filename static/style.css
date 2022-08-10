@@ -1,146 +1,151 @@
-/*Store this code in 'style.css' file inside the 'static' folder*/
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+</style>
 
 .logincontent{
-	margin: 0 auto;
-	height: 500px;
-	width: 400px;
-	background-color: #e6ffee;
-	border-radius: 10px;
+   margin: 0 auto;
+   height: 100%;
+   width: 100%;
+   background-color: #D8F3DC;
+   border-radius: 10px;
 }
 
 .registercontent{
-	margin: 0 auto;
-	height: 720px;
-	width: 400px;
-	background-color: #e6ffee;
-	border-radius: 10px;
+   margin: 0 auto;
+   height: 100%;
+   width: 100%;
+   background-color: #D8F3DC;
+   border-radius: 10px;
 }
 
 .logintop{
-	height: 60px;
-	width: 400px;
-	background-color: #009933;
-	color: #ffffff;
+   height: 60px;
+   width: 100%;
+   background-color: #52B788;
+   color: #ffffff;
+   font-family: 'Montserrat', sans-serif;
+}
+
+.logintop login-heading{
+    color: #fff;
+   text-align: center;
+   line-height: 3
+   font-family: 'Montserrat', sans-serif;
 }
 
 .registertop{
-	height: 60px;
-	width: 400px;
-	background-color: #009933;
-	color: #ffffff;
+   height: 60px;
+   width: 100%;
+   background-color: #52B788;
+   color: #ffffff;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .textbox{
-	padding: 10px 40px;
-	background-color: #009933;
-	border-radius: 10px;
+   padding: 20px 50px;
+   background-color: #52B788;
+   border-radius: 10px;
+   font-family: 'Montserrat', sans-serif;
 }
 
 ::placeholder {
-	color: #FFFFFF;
-	opacity: 1;
-	font-style: oblique;
-	font-weight: bold;
+   color: #FFFFFF;
+   opacity: 1;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 12.25px;
 }
 
 .btn {
-	padding: 10px 40px;
-	background-color: #009933;
-	color: #FFFFFF;
-	font-style: oblique;
-	font-weight: bold;
-	border-radius: 10px;
+   padding: 10px 40px;
+   background-color: #52B788;
+   color: #FFFFFF;
+   border-radius: 10px;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .worddark{
-	color: #009933;
-	font-style: oblique;
-	font-weight: bold;
+   color: #52B788;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .wordlight{
-	color: #FFFFFF;
-	font-style: oblique;
-	font-weight: bold;
+   color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
 }
 
 *{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	list-style: none;
-	text-decoration: none;
-	font-family: 'Josefin Sans', sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   list-style: none;
+   text-decoration: none;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .one{
-	display: flex;
-	position: relative;
+   display: flex;
+   position: relative;
 }
 
 .one .two{
-	width: 225px;
-	height: 100%;
-	background: #009933;
-	padding: 30px 0px;
-	position: fixed;
+   width: 225px;
+   height: 100%;
+   background: #52B788;
+   padding: 30px 0px;
+   position: fixed;
 }
 
 .one .two h1{
-	color: #fff;
-	text-transform: uppercase;
-	text-align: center;
-	margin-bottom: 30px;
-	font-style: oblique;
-	font-weight: bold;
+   color: #fff;
+   text-align: center;
+   line-height: 3
+   font-family: 'Montserrat', sans-serif;
 }
 
 .one .two h2{
-	color: #fff;
-	text-align: center;
+   color: #fff;
+   text-align: center;
 }
 
 .one .two .active{
-	background: #0a8032;
+   background: #0a8032;
 }
 
 .one .two ul li{
-	text-align: center;
-	padding: 15px;
-	border-bottom: 0.1px solid white;
-	border-top: 0.1px solid white;
+   text-align: center;
+   padding: 15px;
+   border-bottom: 0.1px solid white;
+   border-top: 0.1px solid white;
 }
 
 .one .two ul li a{
-	color: #ffffff;
-	display: block;
+   color: #ffffff;
+   display: block;
 }
 
 .one .two ul li a .side{
-	width: 25px;
-	align:center;
+   width: 25px;
+   align:center;
 }
 
 .one .content{
-	width: 100%;
-	margin-left: 200px;
+   width: 100%;
+   margin-left: 200px;
 }
 
 .one .content .topbar{
-	text-align: center;
-	padding: 20px;
-	background: #00b33c;
-	color: white;
+   text-align: center;
+   padding: 20px;
+   background: #52B788;
+   color: white;
 }
 
 .one .content .contentbar{
-	margin: auto;
+   margin: auto;
 }
 
 .one .content .contentbar h1{
-	color: #11a844;
-	text-align: center;
-	font-style: oblique;
-	font-weight: bold;
+   color: #11a844;
+   text-align: center;
+   font-family: 'Montserrat', sans-serif;
 }
-
