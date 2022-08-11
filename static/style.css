@@ -10,6 +10,20 @@
    border-radius: 10px;
 }
 
+.loginbottom form #rememberme, .register form #rememberme {
+  width: 100%;
+  height: auto;
+  padding: 5px 20px;
+  background-color: transparent;
+  color: #000;
+  justify-content: flex-start;
+}
+
+.loginbottom form #rememberme input, .register form #rememberme input {
+  transform: scale(1.3);
+  margin-right: 7px;
+}
+
 .registercontent{
    margin: 0 auto;
    height: 100%;
@@ -148,4 +162,10 @@
    color: #11a844;
    text-align: center;
    font-family: 'Montserrat', sans-serif;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }

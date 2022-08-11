@@ -1,23 +1,30 @@
-<!--login page-->
 <html>
     <head>
         <meta charset="UTF-8">
         <title> Login </title>
         <link rel="stylesheet" href="../static/style.css">
+</style>
     </head>
     <body>
         <div class="logincontent" align="center">
             <div class="logintop">
-                <h1>Login</h1>
+                <h1 class="login-heading"> Thrive</h1>
             </div></br></br></br></br>
             <div class="loginbottom">
               <form action="{{ url_for('login')}}" method="post" autocomplete="off">
             <div class="msg">{{ msg }}</div>
             <input type="text" name="username" placeholder="Enter Your Username" class="textbox" id="username" required></br></br>
             <input type="password" name="password" placeholder="Enter Your Password" class="textbox" id="password" required></br></br></br>
+                  <label id="rememberme">
+               <input type="checkbox" name="rememberme">Remember me
+            </label>
+                  <input type="hidden" name="token" value="{{ token }}">
             <input type="submit" class="btn" value="Login">
+
               </form></br></br>
               <p class="worddark">New to this page? <a class="worddark" href="{{ url_for('register')}}">Register here</a></p>
+
+            </div>
             </div>
         </div>
     </body>

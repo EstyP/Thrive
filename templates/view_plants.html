@@ -1,45 +1,48 @@
-<!--profile page-->
-<html lang="en">
+<!--view all plants in db-->
+<html>
     <head>
         <title>view_plants</title>
         <link rel="stylesheet" href="../static/style.css">
     </head>
-    <body bgcolor="#e6ffee">
+
+    <body bgcolor="#D8F3DC">
         <div class="one">
             <div class="two">
+                <div class="container">
+		            <div class="row margin-top-30">
+			            <div class="col-lg-12">
+                         <img src="static/img/logo.png" style="width:60%" class="center">
+                	</div>
+		            </div>
+	            </div>
                 <h1>Navigation</h1>
                 <ul>
                     <li><a href="{{url_for('index')}}">Home</a></li>
-                    <li class="active"><a href="{{url_for('display')}}">Profile</a></li>
+                    <li><a href="{{url_for('display')}}">Profile</a></li>
                     <li><a href="{{url_for('insert')}}">Add Plants</a></li>
                     <li><a href="{{url_for('update')}}">Update Details</a></li>
                     <li><a href="{{url_for('search')}}">Search</a></li>
                     <li><a href="{{url_for('user_plants')}}">Add My Own Plants</a></li>
+                    <li class="active"><a href="{{url_for('view_plants')}}">View Plants</a></li>
                     <li><a href="{{url_for('logout')}}">Log out</a></li>
                 </ul>
             </div>
-            <div class="content" align="center">
+        <div class="content" align="center">
                 <div class="topbar">
-                    <h2>Welcome!! You are in Profile Page!! </h2>
+                    <h2>View All Plants </h2>
                 </div>  </br>
                 <div class="contentbar">
-                    <h1>Your Details</h1>    </br>
-
-                        <div class="border">
-                            <table class="worddark"></br></br></br></br>
-
-
+                    <h1>View Plants</h1>    </br>
+        <p></p>
+        <center>
             <tr>
-                <td> {{account}}</td>
+                <ul> {% for value in data %}
+                <li> {{value}}</li>
+                    {% endfor %}
+                </ul>
                 </br>
             </tr>
-                            </table>
-
-                        </div>
-
-                </div>
-
-            </div>
+        </div>
         </div>
     </body>
 </html>
