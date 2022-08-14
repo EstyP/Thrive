@@ -12,18 +12,18 @@ CREATE TABLE plants (
     humidity varchar(50) NOT NULL,
     min_temp int NOT NULL,
     max_temp int NOT NULL,
-    url varchar(100) NOT NULL,
+    image_url varchar(100) NOT NULL,
 
     PRIMARY KEY (plant_name)
 );
 
 CREATE TABLE users (
     id int NOT NULL AUTO_INCREMENT,
-    username varchar(50),
-    password varchar(150),
-    email varchar(100),
-    rememberme varchar(255) NOT NULL DEFAULT '',
+    username varchar(50) NOT NULL,
+    email varchar(100) NOT NULL,
     city varchar(100) NOT NULL,
+    password varchar(150) NOT NULL,
+    salt char(40) NOT NULL,
 
     PRIMARY KEY (id)
 );
@@ -38,7 +38,7 @@ CREATE TABLE user_plants (
 );
 
 INSERT INTO plants
-(plant_name, common_name, light, maintenance, water_days, soil_water_indicator, toxic, humidity, min_temp, max_temp, url)
+(plant_name, common_name, light, maintenance, water_days, soil_water_indicator, toxic, humidity, min_temp, max_temp, image_url)
 VALUES
 ('aglaonema', 'chinese evergreen', 'part sun', 'easy', 6, 'dry', 'yes', 'humid', 18, 25, 'aglaonema.jpg'),
 ('alocasia', 'elephant ear', 'full sun', 'hard', 2, 'moist', 'yes', 'high humidity', 18, 25, 'alocasia.jpg'),

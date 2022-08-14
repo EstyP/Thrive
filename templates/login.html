@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/new_style.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
-<body class="h-100 d-flex flex-direction-column justify-content-center align-items-center" style="background-image: url('../static/background.jpg'); background-position: right bottom; background-repeat: no-repeat; background-attachment: fixed; background-size: contain">
-  <img src="../static/logo.png" style="position: fixed; top: 0; left: 25px; width: 150px;">
+<body class="h-100 d-flex flex-direction-column justify-content-center align-items-center" style="background-image: url('/static/background.jpg'); background-position: right bottom; background-repeat: no-repeat; background-attachment: fixed; background-size: contain">
+  <img src="/static/logo.png" style="position: fixed; top: 0; left: 25px; width: 150px;">
   <form method="post" action="{{ url_for('login') }}" autocomplete="off" style="width: 80%; max-width: 300px;">
     <div class="msg">{{ msg }}</div>
     <h2 class="mb-4 text-center" style="font-family: 'Montserrat', sans-serif;">Welcome to Thrive.</h2>
@@ -23,13 +23,14 @@
       <label for="password" class="form-label">Password</label>
       <input type="password" class="form-control" id="password" name="password">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
-      <label class="form-check-label" for="rememberme">Remember me</label>
-    </div>
     <input type="hidden" name="token" value="{{ token }}">
     <button type="submit" class="btn btn-outline-success d-block w-100 mb-3">Sign in</button>
-    <p class="text-center">Not yet registered? <a href="{{ url_for('register') }}" class="link-success">Sign up</a></p>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <p class="text-danger text-center">{{ messages|join(' • ') }}</p>
+      {% endif %}
+    {% endwith %}
+    <p class="text-center">Not yet registered? <a href="{{ url_for('signup') }}" class="link-success">Sign up</a></p>
   </form>
 </body>
 </html>

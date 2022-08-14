@@ -9,16 +9,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css">
-  <link rel="stylesheet" href="/static/new_style.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="h-100 d-flex flex-direction-column justify-content-center align-items-center" style="background-image: url('/static/background.jpg'); background-position: right bottom; background-repeat: no-repeat; background-attachment: fixed; background-size: contain;">
   <div style="position: fixed; top: 0; left: 25px;">
     <img src="/static/logo.png" style="width: 150px;">
-    <button class="btn btn-lg btn-outline-success border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="font-size: 1.5rem;">&rarr;</button>
+    <button class="btn btn-lg btn-outline-success border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" style="font-size: 1.5rem;">&rarr;</button>
   </div>
-  <div class="offcanvas offcanvas-start px-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas offcanvas-start px-2" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" style="width: 300px;">
     <div class="offcanvas-header">
-      <h3 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h3>
+      <h3 class="offcanvas-title" id="offcanvasLabel">Menu</h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -30,7 +30,7 @@
   </div>
   <div class="text-center" style="width: 80%; max-width: 600px;">
     <h2 class="mb-4" style="font-family: 'Montserrat', sans-serif;">Welcome, {{ account['username'] }}</h2>
-    <p class="lead">The weather today in {{ city.city.capitalize() }} is {{ weather.description.lower() }}. It is currently {{ weather.temperature }}.</p>
+    <p class="lead">The weather today in {{ account['city'] }} is {{ weather.description.lower() }}. It is currently {{ weather.temperature }}.</p>
     <a role="button" href="{{ url_for('profile') }}" class="btn btn-success">Go to my profile</a>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -9,16 +9,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css">
-  <link rel="stylesheet" href="../static/new_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
-<body class="d-flex flex-column align-items-center" style="min-height: 100%; background-image: url('../static/background.jpg'); background-position: right bottom; background-repeat: no-repeat; background-attachment: fixed; background-size: contain;">
+<body class="d-flex flex-column align-items-center" style="min-height: 100%; background-image: url('/static/background.jpg'); background-position: right bottom; background-repeat: no-repeat; background-attachment: fixed; background-size: contain;">
   <div style="position: fixed; top: 0; left: 25px;">
     <img src="/static/logo.png" style="width: 150px;">
-    <button class="btn btn-lg btn-outline-success border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" style="font-size: 1.5rem;">&rarr;</button>
+    <button class="btn btn-lg btn-outline-success border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" style="font-size: 1.5rem;">&rarr;</button>
   </div>
-  <div class="offcanvas offcanvas-start px-2" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas offcanvas-start px-2" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" style="width: 300px;">
     <div class="offcanvas-header">
-      <h3 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h3>
+      <h3 class="offcanvas-title" id="offcanvasLabel">Menu</h3>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -33,11 +34,78 @@
     <div class="d-flex flex-wrap justify-content-center my-3" style="max-height: calc(100vh - 300px); overflow: auto;">
       {% for plant in plant_data %}
         <div class="card d-flex flex-column justify-content-between m-2" style="width: 200px; overflow: hidden;">
-          <img src="/static/plants/{{ plant['url'] }}" alt="" style="width: 100%;">
-          <p class="card-text p-1 text-center">{{ plant['plant_name'].title() }}<br><small>{{ plant['common_name'].title() }}</small></p>
+          <img src="/static/plants/{{ plant['image_url'] }}" alt="" style="width: 100%;">
+          <p class="card-text p-1 text-center">{{ plant['common_name'].capitalize() }}<br><small>{{ plant['plant_name'].capitalize() }}</small></p>
           <div>
-            <a role="button" href="#" class="btn btn-success d-block m-2 mt-0">More info</a>
-            <a role="button" href="#" class="btn btn-outline-success d-block m-2 mt-0">I have this plant</a>
+            <a role="button" href="#" data-bs-toggle="modal" data-bs-target="#{{ plant['plant_name'].replace(' ', '') }}" class="btn btn-success d-block m-2 mt-0">More info</a>
+            <form method="post" class="p-2 pt-0">
+              {% if plant['plant_name'] in user_plants %}
+                <button type="submit" formaction="/remove_plant/{{ plant['plant_name'] }}" class="btn btn-outline-secondary d-block w-100">Remove this plant</button>
+              {% else %}
+                <button type="submit" formaction="/add_plant/{{ plant['plant_name'] }}" class="btn btn-outline-success d-block w-100">Add this plant</button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+        <div class="modal fade" id="{{ plant['plant_name'].replace(' ', '') }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">More info</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <table class="table mb-0">
+                  <tbody>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Scientific name</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-microscope"></i></td>
+                      <td style="width: 48%;">{{ plant['plant_name'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Common name</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-seedling"></i></td>
+                      <td style="width: 48%;">{{ plant['common_name'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Light conditions</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-cloud-sun"></i></td>
+                      <td style="width: 48%;">{{ plant['light'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Maintenance level</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-plant-wilt"></i></td>
+                      <td style="width: 48%;">{{ plant['maintenance'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Watering frequency</th>
+                      <td class="text-center" style="width: 4%;"><i class="text-success fa-solid fa-faucet-drip"></i></td>
+                      <td style="width: 48%;">every {{ plant['water_days'] }} day(s)</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Soil conditions</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-earth-americas"></i></td>
+                      <td style="width: 48%;">{{ plant['soil_water_indicator'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Toxic?</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-skull-crossbones"></i></td>
+                      <td style="width: 48%;">{{ plant['toxic'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end" style="width: 48%;">Humidity</th>
+                      <td class="text-center"  style="width: 4%;"><i class="text-success fa-solid fa-droplet"></i></td>
+                      <td style="width: 48%;">{{ plant['humidity'] }}</td>
+                    </tr>
+                    <tr>
+                      <th scope="row" class="text-end border-bottom-0" style="width: 48%;">Ideal temperature</th>
+                      <td class="text-center border-bottom-0" style="width: 4%;"><i class="text-success fa-solid fa-temperature-half"></i></td>
+                      <td class="border-bottom-0" style="width: 48%;">{{ plant['min_temp'] }}&deg;C to {{ plant['max_temp'] }}&deg;C</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       {% endfor %}
