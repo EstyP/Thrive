@@ -12,24 +12,23 @@
 </head>
 <body class="h-100 d-flex flex-direction-column justify-content-center align-items-center" style="background-image: url('../static/background.jpg'); background-position: right bottom; background-repeat: no-repeat; background-attachment: fixed; background-size: contain">
   <img src="../static/logo.png" style="position: fixed; top: 0; left: 25px; width: 150px;">
-  <form method="post" action="{{ url_for('login') }}" autocomplete="off" style="width: 80%; max-width: 300px;">
-    <div class="msg">{{ msg }}</div>
+  <form method="post" action="{{ url_for('register') }}" autocomplete="off" style="width: 80%; max-width: 300px;">
     <h2 class="mb-4 text-center" style="font-family: 'Montserrat', sans-serif;">Welcome to Thrive.</h2>
+    <div class="msg">{{ msg }}</div>
     <div class="mb-3">
       <label for="username" class="form-label">Username</label>
       <input type="text" class="form-control" id="username" name="username">
     </div>
     <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="mb-3">
       <label for="password" class="form-label">Password</label>
       <input type="password" class="form-control" id="password" name="password">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="rememberme" name="rememberme">
-      <label class="form-check-label" for="rememberme">Remember me</label>
-    </div>
-    <input type="hidden" name="token" value="{{ token }}">
-    <button type="submit" class="btn btn-outline-success d-block w-100 mb-3">Sign in</button>
-    <p class="text-center">Not yet registered? <a href="{{ url_for('register') }}" class="link-success">Sign up</a></p>
+    <button type="submit" class="btn btn-outline-success d-block w-100 mb-3">Sign up</button>
+    <p class="text-center">Already registered? <a href="{{ url_for('login') }}" class="link-success">Sign in</a></p>
   </form>
 </body>
 </html>
