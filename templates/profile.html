@@ -63,6 +63,7 @@
             </ul>
           </div>
         </div>
+
       {% elif user_plants|length %}
         <div class="d-flex flex-wrap justify-content-center mt-4">
           {% for plant in user_plants %}
@@ -70,6 +71,7 @@
               <img src="/static/plants/{{ plant['image_url'] }}" alt="" class="w-100">
               <small class="card-text p-1 text-center">{{ plant['common_name'].title() }}</small>
             </div>
+
           {% endfor %}
         </div>
       {% else %}
